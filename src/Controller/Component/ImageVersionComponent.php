@@ -256,7 +256,6 @@ class ImageVersionComponent /*extends Component*/ {
 			if(!empty($folderData)):
 				$finalPath = strstr($outputPath->Folder->path.DS.$outputPath->name().'.'.$outputPath->ext(), $folderData);
 			else:
-				echo 'eee';
 				$finalPath = substr(strstr($outputPath->Folder->path.DS.$outputPath->name().'.'.$outputPath->ext(), 'webroot'), 7);
 			endif;
 			// PHP 5.3.0 would allow for a true flag as the third argument in strstr()...
