@@ -21,7 +21,7 @@ use Cake\Controller\Component;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
 
-class ImageVersionComponent /*extends Component*/ {
+class ImageVersionComponent extends Component {
 /**
  * Components
  *
@@ -201,7 +201,7 @@ class ImageVersionComponent /*extends Component*/ {
 				$thumbQuality = ceil(($thumbQuality / 10)); // 0-9 is the range for png	
 			endif;				
 
-		    $im = imagecreatefrompng($source);
+		    $im = @imagecreatefrompng($source);
 		
 		    $new_im = ImageCreatetruecolor($thumb_size_x,$thumb_size_y);
 		    
@@ -228,7 +228,7 @@ class ImageVersionComponent /*extends Component*/ {
 		case 'gif':
 			// Create GIF		
 			$new_im = ImageCreatetruecolor($thumb_size_x,$thumb_size_y);
-			$im = imagecreatefromgif($source);
+			$im = @imagecreatefromgif($source);
 			imagecopyresampled($new_im,$im,0,0,$x,$y,$thumb_size_x,$thumb_size_y,$width,$height);	
 			imagegif($new_im,$dest); // no quality setting
 			
@@ -246,7 +246,7 @@ class ImageVersionComponent /*extends Component*/ {
 		default:
 			// Create JPG		
 			$new_im = ImageCreatetruecolor($thumb_size_x,$thumb_size_y);
-			$im = imagecreatefromjpeg($source);
+			$im = @imagecreatefromjpeg($source);
 			imagecopyresampled($new_im,$im,0,0,$x,$y,$thumb_size_x,$thumb_size_y,$width,$height);	
 			imageinterlace($new_im, true);
 			imagejpeg($new_im,$dest,$thumbQuality);
@@ -256,6 +256,7 @@ class ImageVersionComponent /*extends Component*/ {
 			if(!empty($folderData)):
 				$finalPath = strstr($outputPath->Folder->path.DS.$outputPath->name().'.'.$outputPath->ext(), $folderData);
 			else:
+				echo 'eee';
 				$finalPath = substr(strstr($outputPath->Folder->path.DS.$outputPath->name().'.'.$outputPath->ext(), 'webroot'), 7);
 			endif;
 			// PHP 5.3.0 would allow for a true flag as the third argument in strstr()...

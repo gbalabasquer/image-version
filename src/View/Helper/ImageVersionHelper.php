@@ -11,6 +11,7 @@
 
 namespace ImageVersion\View\Helper;
 
+use Cake\Controller\ComponentRegistry;
 use Cake\View\Helper;
 use ImageVersion\Controller\Component\ImageVersionComponent;
 
@@ -31,10 +32,10 @@ class ImageVersionHelper extends Helper
 	 * @return HTML string including image tag and src attribute, along with any additional options.
 	 */
 	function version($image=null, $size=array(75, 75), $thumbQuality=85, $crop=false, $options=array(), $folderData='', $returnUrl = false) {
-
+		
 		// init the component, if it hasn't been initialized
 		if(!$this->component):
-			$this->component = new ImageVersionComponent;
+			$this->component = new ImageVersionComponent(new ComponentRegistry());
 		endif;
 
 		$outputImage = str_replace("\\","/",$this->component->version($image, $size, $thumbQuality, $crop, $folderData));
