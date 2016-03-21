@@ -1,6 +1,6 @@
 
 {
-    "name": "image-version",
+    "name": "imageversion/image-version",
     "description": "CakePHP 3 ImageVersion Plugin",
     "type": "cakephp-plugin",
     "keywords": ["cakephp", "cakephp3", "imageVersion"],
@@ -20,11 +20,12 @@
     },
     "autoload": {
 	"psr-4": {
-	    "image-version\\": "src"
+	    "ImageVersion\\": "src"
 	}
     },
     "autoload-dev": {
 	"psr-4": {
+            "ImageVersion\\Test\\": "tests",
 	    "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
 	}
     },
