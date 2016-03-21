@@ -1,0 +1,34 @@
+
+{
+    "name": "image-version",
+    "description": "CakePHP 3 ImageVersion Plugin",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "cakephp3", "imageVersion"],
+    "license": "MIT",
+    "authors": [
+	{
+	    "name": "Tom Maiaroto (Adapted by: Gonzalo Balabasquer)",
+	    "email": "gbalabasquer@gmail.com"
+	}
+    ],
+    "require": {
+	"php": ">=5.4",
+	"facebook/php-sdk-v4": "~5.0"
+    },
+    "require-dev": {
+	"phpunit/phpunit": "*"
+    },
+    "autoload": {
+	"psr-4": {
+	    "image-version\\": "src"
+	}
+    },
+    "autoload-dev": {
+	"psr-4": {
+	    "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+	}
+    },
+    "extra": {
+	"installer-name": "ImageVersion"
+    }
+}
