@@ -34,14 +34,19 @@ class ImageVersionHelper extends Helper
 	function version($image=null, $size=array(75, 75), $thumbQuality=85, $crop=false, $options=array(), $folderData='', $returnUrl = false) {
 		
 		if(substr($image, 0, 4) == 'http') {
-			$options = array();
-			if(isset($size[0])) {
-				$options['width'] = $size[0];
+			if($returnUrl){
+				return $image;
 			}
-			if(isset($size[1])) {
-				$options['height'] = $size[1];
+			else {
+				$options = array();
+				if(isset($size[0])) {
+					$options['width'] = $size[0];
+				}
+				if(isset($size[1])) {
+					$options['height'] = $size[1];
+				}
+				return $this->Html->image($image, $options);
 			}
-			return $this->Html->image($image, $options);
 		}
 		
 		// init the component, if it hasn't been initialized
