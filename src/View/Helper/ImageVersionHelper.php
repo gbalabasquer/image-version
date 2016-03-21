@@ -60,7 +60,7 @@ class ImageVersionHelper extends Helper
             if(!empty($folderData)):
                 return '..'.str_replace("/".APP_DIR."/", "/", "/".$outputImage);
             else:
-                return "..".$outputImage;
+                return $outputImage;
             endif;
         }
 
